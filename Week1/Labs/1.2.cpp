@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main() 
+{
+    string name;
+
+    cout<<"Type in your name"<<endl;
+    cin>> name;
+    cout<< "Welcome to my world! "<<name<<endl;
+    cout<< "How Many Greetings"<<endl;
+    
+    return 0
+}
