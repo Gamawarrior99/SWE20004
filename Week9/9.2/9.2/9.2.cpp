@@ -34,6 +34,8 @@ int main()
 		emp[i] = getdata();
 	}
 
+	printdata(emp, size);
+
 
 }
 
@@ -59,4 +61,20 @@ struct Emp getdata()
 	cout << endl;
 
 	return emp;
+}
+
+void printdata(struct Emp emp[], int size)
+{
+	int i = 0;
+
+	for (i = 0;i < size;i++)
+	{
+		cout << "Enter Employees id: "<<emp[i].emp_id<<endl;
+		cout << "Enter Employee Name: " << emp[i].emp_name << endl;
+		cout << "Enter Employee Salary: " << emp[i].salary << endl;
+		cout << "Enter Company ID: " << emp[i].cmp_detail.company_id << endl;
+		cout << "Enter Company Name: " << emp[i].cmp_detail.company_name << endl;
+
+		cout << endl;
+	}
 }
