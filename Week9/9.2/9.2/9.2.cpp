@@ -5,7 +5,7 @@ using namespace std;
 
 struct Emp getdata(); //gets emp dataand reads into the array
 void printdata(struct Emp emp[], int size); //prints out the data in the struct onto terminal
-double get_average(struct emp* emp, int size , string average); //average salary of a company
+double get_average(struct Emp* emp, int size , string cmp_name); //average salary of a company
 double get_salary(struct Emp emp[], string emp_name); //serach the salary of an employee
 
 
@@ -28,15 +28,24 @@ int main()
 	const int size = 5;
 	int i;
 	struct Emp emp[size];
+	double average;
+	string cmp_name;
 	
-	for (i = 0; i<size;i++)
+	for (i = 0; i<size;i++) 
 	{
 		emp[i] = getdata();
 	}
 
 	printdata(emp, size);
 
+	cout << "Enter a company name to get average for company: ";
+	cin >> cmp_name;
+	average = get_average(emp, size, cmp_name);
 
+	cout << "Average For " << cmp_name << " is " << average << endl;
+
+
+	return 0;
 }
 
 struct Emp getdata()
@@ -77,4 +86,21 @@ void printdata(struct Emp emp[], int size)
 
 		cout << endl;
 	}
+}
+
+double get_average(struct Emp* emp, int size, string cmp_name)
+{
+	double average = 0;
+	int i;
+	int count = 0;
+	for (i = 0; i < size;i++)
+	{
+		if (emp[i].cmp_detail.company_name == cmp_name)
+		{
+			average += emp[i].salary;
+			count++;
+		}
+	}
+
+	return average / count;
 }
