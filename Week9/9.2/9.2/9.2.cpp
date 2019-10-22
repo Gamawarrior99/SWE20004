@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void getdata(); //gets emp dataand reads into the array
+struct Emp getdata(); //gets emp dataand reads into the array
 void printdata(struct Emp emp[], int size); //prints out the data in the struct onto terminal
 double get_average(struct emp* emp, int size , string average); //average salary of a company
 double get_salary(struct Emp emp[], string emp_name); //serach the salary of an employee
@@ -12,7 +12,7 @@ double get_salary(struct Emp emp[], string emp_name); //serach the salary of an 
 struct company_detail
 {
 	string company_id;
-	string companuy_name;
+	string company_name;
 };
 
 struct Emp
@@ -25,7 +25,38 @@ struct Emp
 
 int main()
 {
+	const int size = 5;
+	int i;
+	struct Emp emp[size];
+	
+	for (i = 0; i<size;i++)
+	{
+		emp[i] = getdata();
+	}
 
-	cout << "Print Hello World" << endl;
-	cout << "changed to master<<endl";
+
+}
+
+struct Emp getdata()
+{
+	struct Emp emp;
+
+	cout << "Enter Employees id: ";
+	cin >> emp.emp_id;
+
+	cout << "Enter Employee Name: ";
+	cin >> emp.emp_name;
+
+	cout << "Enter Employee Salary: ";
+	cin >> emp.salary;
+
+	cout << "Enter Company ID: ";
+	cin >> emp.cmp_detail.company_id;
+
+	cout << "Enter Company Name: ";
+	cin >> emp.cmp_detail.company_name;
+
+	cout << endl;
+
+	return emp;
 }
