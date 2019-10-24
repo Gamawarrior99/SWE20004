@@ -1,0 +1,4 @@
+﻿  labtest2.cpp
+C:\Users\102117407\OneDrive - Swinburne University\labtest2\labtest2\labtest2.cpp(126,10): warning C4244:  'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\102117407\OneDrive - Swinburne University\labtest2\labtest2\labtest2.cpp(132,16): warning C4244:  '=': conversion from 'double' to 'int', possible loss of data
+  labtest2.vcxproj -> C:\Users\102117407\OneDrive - Swinburne University\labtest2\Debug\labtest2.exe
