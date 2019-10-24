@@ -1,0 +1,4 @@
+﻿  Test_2_Temp.cpp
+S:\Personal Folders\Test_2_Temp\Test_2_Temp\Test_2_Temp.cpp(82,18): warning C4244:  'initializing': conversion from 'double' to 'int', possible loss of data
+S:\Personal Folders\Test_2_Temp\Test_2_Temp\Test_2_Temp.cpp(82,18): warning C4244: S:\Personal Folders\Test_2_Temp\Test_2_Temp\Test_2_Temp.cpp(92) : warning C4715: 'get_salary': not all control paths return a value
+  Test_2_Temp.vcxproj -> S:\Personal Folders\Test_2_Temp\Debug\Test_2_Temp.exe
