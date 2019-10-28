@@ -22,6 +22,8 @@ typedef struct album albums;
 int menu();
 void add_album(vector<albums>* album);
 void print_album(vector<albums> album);
+void play_album(vector<albums> album);
+void play_track(string track[], int size);
 
 int main()
 {
@@ -40,6 +42,9 @@ int main()
 			case 2: 
 				print_album(album);
 				break;
+      case 3:
+        play_album(album);
+        break; 
 			case 4: 
 				exit = true;
 				break;
@@ -129,10 +134,8 @@ void print_album(vector<albums> album)
 	for (i = 0; i < album.size(); i++)
 	{
 		cout << "Name of the Album is : " << album[i].album_name << endl;
-		switch (album[i].kind)
-		{
-			case 1: cout << "Genre of Album is: " << album[i].kind << endl;
-		}
+
+	cout << "Genre of Album is: " << album[i].kind << endl;
 		
 		cout << "NO. of tracks : " << album[i].track_number << endl;
 		for (x = 0; x < album[i].track_number; x++)
@@ -141,4 +144,13 @@ void print_album(vector<albums> album)
 		}
 		cout << "Track are loacted at: " << album[i].tracklocation << endl;
 	}
+}
+
+void play_album(vector<albums> album)
+{
+  int i = 0;
+  for(i = 0;i<album.size();i++)
+  {
+    cout<< i+1<<". "<<album[i].album_name;
+  }
 }
