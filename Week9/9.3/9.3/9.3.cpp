@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <windows.h>
+//#include <windows.h>
 
 using namespace std;
 
@@ -38,12 +38,15 @@ int main()
 		switch (choice)
 		{
 			case 1: 
+				cout << endl;
 				add_album(&album);
 				break;
 			case 2: 
+				cout << endl;
 				print_album(album);
 				break;
       case 3:
+		  cout << endl;
         play_album(album);
         break; 
 			case 4: 
@@ -118,11 +121,14 @@ void add_album(vector<albums>* album)
 		cout << "Enter Tracks" << endl;
 		for (x = 0; x < data.track_number; x++)
 		{
+			cout << "Track " << x + 1 << ": ";
 			cin >> data.tracks[x];
 		}
 		
 		cout << "Enter Album File Location: ";
 		cin >> data.tracklocation;
+
+		cout << endl;
 
 		album->push_back(data);
 	}
@@ -135,15 +141,14 @@ void print_album(vector<albums> album)
 	for (i = 0; i < album.size(); i++)
 	{
 		cout << "Name of the Album is : " << album[i].album_name << endl;
-
-	cout << "Genre of Album is: " << album[i].kind << endl;
-		
+		cout << "Genre of Album is: " << album[i].kind << endl;
 		cout << "NO. of tracks : " << album[i].track_number << endl;
 		for (x = 0; x < album[i].track_number; x++)
 		{
-			cout << album[i].tracks[x]<<endl;
+			cout <<"Track"<<i+1<<": "<< album[i].tracks[x]<<endl;
 		}
 		cout << "Track are loacted at: " << album[i].tracklocation << endl;
+		cout << endl;
 	}
 }
 
@@ -153,7 +158,7 @@ void play_album(vector<albums> album)
   int alb;
   for(i = 0;i<album.size();i++)
   {
-    cout<< i+1<<". "<<album[i].album_name;
+    cout<< i+1<<". "<<album[i].album_name<<endl;
   }
 
   cin>>alb;
@@ -171,7 +176,8 @@ void play_track(album alb)
     cout<<i+1<<". "<<alb.tracks[i]<<endl;
   }
   cin>>x;
-  x +=1;
-  locate+=alb.tracks[x]+".mp3";
-  playSound(TEXT(locate), NULL, SND_FILENAME |SND_ASYNC);
+  x -=1;
+  locate+="/"+alb.tracks[x]+".mp3";
+  /*PlaySound(TEXT(const_cast<wstring>locate), NULL, SND_FILENAME | SND_ASYNC);*/
+  cout << "You are currently playing " << alb.tracks[x] << " from location " << locate << endl;
 }
