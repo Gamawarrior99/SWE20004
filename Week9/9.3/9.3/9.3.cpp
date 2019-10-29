@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <windows.h>
 
 using namespace std;
 
@@ -23,7 +24,7 @@ int menu();
 void add_album(vector<albums>* album);
 void print_album(vector<albums> album);
 void play_album(vector<albums> album);
-void play_track(string track[], int size);
+void play_track(album alb);
 
 int main()
 {
@@ -149,8 +150,28 @@ void print_album(vector<albums> album)
 void play_album(vector<albums> album)
 {
   int i = 0;
+  int alb;
   for(i = 0;i<album.size();i++)
   {
     cout<< i+1<<". "<<album[i].album_name;
   }
+
+  cin>>alb;
+  play_track(album[alb-1]);
+}
+
+void play_track(album alb)
+{
+  string locate = alb.tracklocation;
+  int x;
+  int i = 0;
+
+  for(i = 0;i<alb.track_number;i++)
+  {
+    cout<<i+1<<". "<<alb.tracks[i]<<endl;
+  }
+  cin>>x;
+  x +=1;
+  locate+=alb.tracks[x]+".mp3";
+  playSound(TEXT(locate), NULL, SND_FILENAME |SND_ASYNC);
 }
