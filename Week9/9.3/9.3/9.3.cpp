@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include <windows.h>
+#include <windows.h>
 
 using namespace std;
 
@@ -167,7 +167,7 @@ void play_album(vector<albums> album)
 
 void play_track(album alb)
 {
-  string locate = alb.tracklocation;
+  string locate = "../"+alb.tracklocation;
   int x;
   int i = 0;
 
@@ -178,6 +178,7 @@ void play_track(album alb)
   cin>>x;
   x -=1;
   locate+="/"+alb.tracks[x]+".mp3";
-  /*PlaySound(TEXT(const_cast<wstring>locate), NULL, SND_FILENAME | SND_ASYNC);*/
   cout << "You are currently playing " << alb.tracks[x] << " from location " << locate << endl;
+	const char* location2 = location.c_str();
+	system(location2);	
 }
