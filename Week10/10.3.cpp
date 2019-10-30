@@ -1,169 +1,114 @@
+#include <iostream>
+#include <cstdlib>
+
 using namespace std;
 
-
-
-struct numbstr 
-
+struct Number
 {
-
-    int number;
-
-    struct numbstr *next;
-
+    int num;
+    struct Number *next;
 };
-
-
-
-typedef struct numbstr NUMBstr;
-
-typedef NUMBstr *NUMBstrptr;
+typedef struct Number number;
+typedef number* numberptr;
 
 
 
 int random_number()
-
 { 
-
     int num;
-
-    num = rand() %50; //genarates a random number between 0 and 50
-
-    return num;
+    return num = rand() %50+1;;
 
 }
 
 
 
-void insert(NUMBstrptr * sPtr, int value) {
+void insert(numberptr * sPtr, int value) {
 
-  NUMBstrptr newPtr; 
-
-  NUMBstrptr previousPtr; 
-
-  NUMBstrptr currentPtr;
-
-  newPtr = new NUMBstr; 
+  numberptr newPtr; 
+  numberptr previousPtr; 
+  numberptr currentPtr;
+  newPtr = new number; 
 
   if (newPtr != NULL)
-
   {
-
-    newPtr-> number = value;
-
+    newPtr-> num = value;
     newPtr-> next = NULL; 
-
     previousPtr = NULL;
-
     currentPtr = * sPtr;
 
-    while (currentPtr != NULL && value > currentPtr-> number) 
-
+    while (currentPtr != NULL && value > currentPtr-> num) 
     {
-
       previousPtr = currentPtr;
-
       currentPtr = currentPtr-> next;
-
     } 
 
     if (previousPtr == NULL)
-
     {
-
       newPtr-> next = * sPtr;* sPtr = newPtr;
-
     }
-
     else 
-
     {
-
       previousPtr-> next = newPtr;
-
       newPtr-> next = currentPtr;
-
     } 
-
   }
-
   else 
-
   {
-
     cout << value << " not inserted. No memory available.\n";
-
   }
-
 }
 
-
-
-int isEmpty( NUMBstrptr sPtr )
-
+int isEmpty( numberptr sPtr )
 {
-
     return sPtr == NULL;
-
 }
 
 
 
 
 
-void printList(NUMBstrptr currentPtr) {
-
-  if (isEmpty(currentPtr)) {
-
+void printList(numberptr currentPtr)
+ {
+  if (isEmpty(currentPtr)) 
+  {
     cout << "List is empty.\n";
-
   } 
-
-  else {
-
+  else 
+  {
     cout << "The list is: ";
-
-    while (currentPtr != NULL) {
-
-      cout << currentPtr-> number << "--> ";
-
+    while (currentPtr != NULL) 
+    {
+      cout << currentPtr-> num << "--> ";
       currentPtr = currentPtr-> next;
-
     }
-
     cout << "NULL\n";
-
   } 
+}
 
+void calculate_average(numberptr currentPtr)
+{
+  int average = 0;
+  while (currentPtr != NULL) 
+    {
+       average+=currentPtr-> num;
+       currentPtr = currentPtr-> next;
+    }
+    cout<<"average is: "<<average/10<<endl;
 }
 
 
 
-
-
-main()
-
+int main()
 {
-
-    srand(time(NULL));// set time to null so the random number function uses doesnt use time to generate a number
-
+    srand(time(NULL));
     int i;
-
     int item;
-
-    NUMBstrptr startPtr = NULL;
-
-    for(i=0;1<10;i++)
-
+    numberptr startPtr = NULL;
+    for(i=0;i<10;i++)
     {
-
         item = random_number();
-
         insert( &startPtr, item);
-
     }
-
-
-
-    printList( startPtr );
-
+    printList(startPtr);
+    calculate_average(startPtr);
 }
