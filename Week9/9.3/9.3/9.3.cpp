@@ -179,6 +179,6 @@ void play_track(album alb)
   x -=1;
   locate+="/"+alb.tracks[x]+".mp3";
   cout << "You are currently playing " << alb.tracks[x] << " from location " << locate << endl;
-	const char* location2 = location.c_str();
-	system(location2);	
+	const char* locat = locate.c_str();
+	system(locat);	
 }
