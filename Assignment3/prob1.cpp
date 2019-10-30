@@ -57,6 +57,7 @@ int main()
         sort_student_names(students, student_total);
         break;
       }
+      break;
       case 4:
       
       cout << "Enter student's grade you want to look for: ";
@@ -74,6 +75,11 @@ int main()
 				break;
 			case 6: 
 			updateFile();
+      student_total = readFile(students);
+      break;
+      case 7:
+      cout<<"Program ended Succesfull"<<endl;
+      break;
     }
   } while (choice != 7);
 return 0;
