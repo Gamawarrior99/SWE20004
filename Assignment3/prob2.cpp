@@ -31,7 +31,7 @@ int main()
   int choice;
 	float index;
   string search;
-  stuptr students;
+  stuptr start;
 
   do{
     menu();
@@ -40,10 +40,10 @@ int main()
         cout << endl;
 		switch(choice){
 			case 1:
-				print_details(students);
+				print_details(start);
 				break;
 			case 2:
-      average(students);
+      average(start);
       break;
       case 3:
       cout<<"sort by (1)grade or (2)name"<<endl;
@@ -51,10 +51,10 @@ int main()
       switch(choice)
       {
         case 1:
-        sort_student_grades(students);
+        sort_student_grades(start);
         break;
         case 2:
-        sort_student_names(students);
+        sort_student_names(start);
         break;
       }
       break;
@@ -63,7 +63,7 @@ int main()
       cout << "Enter student's grade you want to look for: ";
       cin >> search; 
       cout << endl;
-				index = search_s(students, search);
+				index = search_s(start, search);
 					if(index == -1)
                     {
 						cout << "No student found ";
@@ -71,11 +71,11 @@ int main()
 					} 
 				break;
         case 5: 
-			find_max(students);
+			find_max(start);
 				break;
 			case 6: 
 			updateFile();
-      readFile(students);
+      readFile(start);
       break;
       case 7:
       cout<<"Program ended Succesfull"<<endl;
@@ -85,10 +85,12 @@ int main()
 return 0;
 }
 
-int readFile(stuptr students)
+int readFile(stuptr start)
 {
 	int i = 0;
+  stuptr students = new student;
   stuptr previous = NULL;
+
 
 	string line;
 	ifstream inFile("student_details.txt");
@@ -98,6 +100,10 @@ int readFile(stuptr students)
 		cout << endl;
         cout << "File Not Found" << endl;
 	} 
+
+  inFile >> start->name >> start->id>>start->grade; 
+    start->next = NULL;
+    previous = start;
 
 	while (!inFile.eof())
   {
