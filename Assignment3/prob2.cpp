@@ -88,6 +88,7 @@ return 0;
 int readFile(stuptr students)
 {
 	int i = 0;
+  stuptr previous = NULL;
 
 	string line;
 	ifstream inFile("student_details.txt");
@@ -101,8 +102,10 @@ int readFile(stuptr students)
 	while (!inFile.eof())
   {
     inFile >> students->name >> students->id>>students->grade; 
-	  students = new stu;
-	  students = students->next;
+    students->next = NULL;
+	  previous = students;
+    students = new student;
+	  previous = students->next;
   }
 
 inFile.close();
@@ -144,7 +147,14 @@ void sort_student_names(stuptr students)
 
 void print_details(stuptr students)
 {
-
+  while(students->next != NULL)
+  {
+    cout <<"Name: " << students->name << endl;
+    cout <<"ID: " << students->id << endl;
+    cout <<"Grade: " <<students->grade << endl;
+    cout << endl; 
+    students = students->next; 
+  }
 }
 
 int search_s(stuptr students, string search)
@@ -152,7 +162,7 @@ int search_s(stuptr students, string search)
     return 1;
 }
 
-void find_max(stu students)
+void find_max(stuptr students)
 {
   int max;
 	cout << "Highest Grade is: " <<max<< endl << endl;
