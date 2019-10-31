@@ -30,7 +30,7 @@ int main()
 	int choice;
 	float index;
 	string search;
-	stuptr start = NULL;
+	stuptr start = new student;
 
 	readFile(start);
 
@@ -94,7 +94,7 @@ void readFile(stuptr start)
 
 
 	string line;
-	ifstream inFile("student_details.txt");
+	ifstream inFile("grades.txt");
 
 	if (inFile.fail())
 	{
@@ -104,7 +104,7 @@ void readFile(stuptr start)
 
 	inFile >> start->name >> start->id >> start->grade;
 	previous = start;
-  start->next = students;
+	start->next = students;
 
 
 	while (!inFile.eof())
@@ -126,7 +126,7 @@ void updateFile()
 	float in_grade;
 
 	ofstream outFile;
-	outFile.open("student_details.txt", ios_base::app);
+	outFile.open("grades.txt", ios_base::app);
 
 	cout << "Enter Details" << endl;
 	cout << "Name: ";
