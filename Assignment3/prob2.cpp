@@ -94,7 +94,7 @@ void readFile(stuptr start)
 
 
 	string line;
-	ifstream inFile("grades.txt");
+	ifstream inFile("student_details.txt");
 
 	if (inFile.fail())
 	{
@@ -103,8 +103,9 @@ void readFile(stuptr start)
 	}
 
 	inFile >> start->name >> start->id >> start->grade;
-	start->next = NULL;
 	previous = start;
+  start->next = students;
+
 
 	while (!inFile.eof())
 	{
@@ -125,7 +126,7 @@ void updateFile()
 	float in_grade;
 
 	ofstream outFile;
-	outFile.open("grades.txt", ios_base::app);
+	outFile.open("student_details.txt", ios_base::app);
 
 	cout << "Enter Details" << endl;
 	cout << "Name: ";
@@ -153,7 +154,7 @@ void sort_student_names(stuptr students)
 
 void print_details(stuptr students)
 {
-	while (students->next != nullptr)
+	while (students->next != NULL)
 	{
 		cout << "Name: " << students->name << endl;
 		cout << "ID: " << students->id << endl;
