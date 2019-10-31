@@ -1,3 +1,9 @@
+/*
+Name: Gamaliel D'mello
+Student Number: 102117407
+Description: reads and updates file of students
+*/
+
 #include<iostream>
 #include<string>
 #include<cstdlib>
